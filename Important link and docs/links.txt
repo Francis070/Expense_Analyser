@@ -1,0 +1,7 @@
+Documentation for pyTelegramBotAI - https://pypi.org/project/pyTelegramBotAPI/#description
+
+Issue for timeout - https://stackoverflow.com/questions/51768496/why-do-https-requests-produce-ssl-certificate-verify-failed-error/51768580#51768580
+
+			- https://github.com/eternnoir/pyTelegramBotAPI/issues/528
+
+Read the content of Receipt - https://towardsdatascience.com/how-to-extract-text-from-images-with-python-db9b87fe432b
