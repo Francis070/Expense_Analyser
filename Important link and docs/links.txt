@@ -4,4 +4,4 @@ Issue for timeout - https://stackoverflow.com/questions/51768496/why-do-https-re
 
 			- https://github.com/eternnoir/pyTelegramBotAPI/issues/528
 
-Read the content of Receipt - https://towardsdatascience.com/how-to-extract-text-from-images-with-python-db9b87fe432b
+Image preprocessing - https://towardsdatascience.com/getting-started-with-tesseract-part-i-2a6a6b1cf75e
