@@ -1,11 +1,49 @@
 import pandas as pd
+import sqlite3
 
+conn = sqlite3.connect('expense.db')
+# cursor = conn.cursor()
 source = 'SBI'
 
 path = r'C:\Users\amiab\Projects\Expense Manager\bank_statement\SBI\1674916118250LUS5WmVN15QZ9SD9.csv'
 
-df = pd.read_csv(path)
+df = pd.DataFrame(pd.read_csv(path))
+header = [x.strip() for x in df.columns]
+df.columns = header
+
 # print(df.head())
-print(df.loc[0, :])
-# for line in range(len(df)):
-#     print(df.loc[[line]])
+
+for row in range(len(df)):
+    datetime = df.iloc[row]['Txn Date']
+    txn_desc = df.iloc[row]['Description']
+    balance = df.iloc[row]['Balance']
+    txn_id = df.iloc[row]['Ref No./Cheque No.']
+    if not isinstance(txn_id, float):
+        txn_id = txn_id.strip()
+        txn_id = df.iloc[row]['Ref No./Cheque No.'].split()[-1]
+    else:
+        txn_id = ''
+    amount = 0
+    txn_type = ''
+    # print(df.iloc[row]['Debit'])
+
+    if df.iloc[row]['Debit'].strip() == '':
+        amount = df.iloc[row]['Credit']
+        txn_type += 'Credit'
+    else:
+        amount = df.iloc[row]['Debit']
+        txn_type += 'Debit'
+
+    params = (datetime, amount, txn_id, txn_desc, txn_type, source, balance)
+
+    insert_val = '''insert into untracked_txn values(?, ?, ?, ?, ?, ?, ?);'''
+
+    conn.execute(insert_val, params)
+
+conn.commit()
+conn.close()
+
+
+
+
+
