@@ -1,0 +1,31 @@
+Questions:
+
+1. Where can I save more expense?
+
+Solution: 
+
+2. How much to invest every month?
+
+Solution:
+
+3. Wastage of money on category and sub_category in descending order.
+
+Solution:
+
+4. Analysis of all the expenditure.
+
+Solution: 
+
+5. How much I am spending and what is the limit of spend every month?
+
+Solution: 
+
+6. Expenditure graph in a month.
+
+Solution:
+
+7. Graph for wastage of money.
+
+Solution:
+
+8. The budget and expenses table should have 1 month data or more than a months data?
