@@ -8,12 +8,12 @@ conn.execute('drop table if exists untracked_txn;')
 
 conn.execute('''create table if not exists untracked_txn (
 datetime varchar(50),
-amount real,
+amount varchar(50),
 txn_id varchar(100),
 txn_desc varchar(200),
 txn_type varchar(100),
 source varchar(100),
-balance real
+balance varchar(50)
 );''')
 
 
