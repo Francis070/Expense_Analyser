@@ -17,10 +17,10 @@ print('opened DB successfully')
 # );''')
 
 
-conn.execute('drop table if exists transactions ;')
+conn.execute('drop table if exists transactions;')
 
 conn.execute('''create table if not exists transactions (
-# expense_id autoincrement
+expense_id INTEGER PRIMARY KEY AUTOINCREMENT,
 datetime date,
 amount real,
 txn_id varchar(100),

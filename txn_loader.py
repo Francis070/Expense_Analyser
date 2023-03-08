@@ -4,10 +4,12 @@ conn = sqlite3.connect('expense.db')
 
 print('Opened transaction table successfully')
 
-conn.execute('truncate table if exists untracked_txn;')
+# conn.execute('delete from transactions;')
+# conn.execute('''delete from sqlite_sequence where name = 'transactions';''')
 
 conn.execute(
-'''insert into transactions 
+'''insert into transactions (datetime, amount, txn_id, txn_desc, txn_type, balance, source, sub_source, 
+category, sub_category, spent_desc, wasted)
 select
 case 
 when substr(datetime, 4, 3) = 'Jan' then date('20'||substr(datetime,8,2)||'-01-'||substr(datetime,1,2))
@@ -38,8 +40,10 @@ from untracked_txn;''')
 
 conn.execute(
 '''update transactions
-set 
-expense_id = 'ex00'||expense_id;''')
+set
+txn_id = 'ex00'||expense_id
+where txn_id = '' or txn_id is null
+;''')
 
 print("Inserted data successfully")
 

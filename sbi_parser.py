@@ -37,7 +37,3 @@ for x in os.listdir():
         df = pd.read_csv(dir + '\\' + file_name + '.txt', sep='\t', header=None)
         df.to_csv(dir + '\\' + file_name + '.csv', header=False, index=False)
         os.remove(dir + '\\' + file_name + '.txt')
-
-
-
-
