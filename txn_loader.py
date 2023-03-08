@@ -36,6 +36,11 @@ null as spent_desc,
 false as wasted
 from untracked_txn;''')
 
+conn.execute(
+'''update transactions
+set 
+expense_id = 'ex00'||expense_id;''')
+
 print("Inserted data successfully")
 
 conn.commit()
