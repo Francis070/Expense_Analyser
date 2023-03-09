@@ -1,6 +1,5 @@
 import pandas as pd
 import sqlite3
-from numpy import double
 
 # data = pd.read_csv(r'C:\Users\amiab\Projects\Expense Manager\csv_files\Category.csv')
 data = pd.read_csv(r'C:\Users\amiab\Projects\Expense Manager\csv_files\Source.csv')

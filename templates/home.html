@@ -5,6 +5,51 @@
     <title>Expense Tracker</title>
 </head>
 <body>
+<form action="/"  METHOD="POST" >
+<!-- Generate all the expense content -->
+<table
+        style=" font-family: arial, sans-serif;
+       width: 80%;
+       border: 1px solid black;
+       margin-left: 70px;
+       margin-top: 50px;
+       text-align: center;
+       padding:10px;"
+>
 
+    <tr>
+        <th>DateTime</th>
+        <th>TransactionID</th>
+        <th>Source</th>
+        <th>TransactionType</th>
+        <th>Amount</th>
+        <th>SubSource</th>
+        <th>Category</th>
+        <th>SubCategory</th>
+        <th>SpentDescription</th>
+        <th>Wasted</th>
+    </tr>
+
+    {% for row in rows %}
+    <tr>
+        <td>row['datetime']</td>
+        <td>row['txn_id']</td>
+        <td>row['source']</td>
+        <td>row['txn_type']</td>
+        <td>row['amount']</td>
+        <td>row['sub_source']</td>
+        <td>row['category']</td>
+        <td>row['sub_category']</td>
+        <td>row['spent_desc']</td>
+        <td>row['wasted']</td>
+    </tr>
+    {% endfor %}
+
+</table>
+
+<!-- View all the claims -->
+<!-- <button type="submit", class="viewall-button" name="save", value="save">View All</button>-->
+
+</form>
 </body>
 </html>

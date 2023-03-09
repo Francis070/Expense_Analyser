@@ -9,13 +9,34 @@ def get_db_connection():
     return conn
 
 
-@app.route('/')
+@app.route('/', methods=['POST', 'GET'])
 def home():
     return render_template('home.html')
     conn = get_db_connection()
-    posts = conn.execute('SELECT * FROM posts').fetchall()
+    posts = conn.execute('''SELECT datetime, txn_id, source, txn_type, amount, sub_source, category, sub_category, 
+    spent_desc, wasted FROM transactions''').fetchall()
     conn.close()
-    return render_template('index.html', posts=posts)
+    return render_template('home.html', rows = rows)
+    # try:
+    #     if request.method == 'POST':
+    #
+    #         # use = session['user'].get("name")
+    #         # ema = session['user'].get("preferred_username")
+    #
+    #         conn = sqlite3.connect('expense.db')
+    #         c = conn.cursor()
+    #         c.execute('''SELECT * FROM transactions''')
+    #
+    #         rows = c.fetchall()
+    #         print('try is running')
+    #         return render_template("home.html", rows=rows)
+    # except:
+    #     # for row in rows:
+    #     #     print(row)
+    #     #
+    #     # conn.close()
+    #     print('except is running')
+    #     return render_template('home.html')
 
 
 if __name__ == "__main__":
