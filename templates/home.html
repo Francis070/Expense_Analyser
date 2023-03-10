@@ -3,45 +3,58 @@
 <head>
     <meta charset="UTF-8">
     <title>Expense Tracker</title>
+    <style type="text/css" media="screen">
+
+    table{
+        border-collapse:collapse;
+        border:1px solid #FF0000;
+    }
+
+    table td{
+        border:1px solid #FF0000;
+    }
+</style>
 </head>
 <body>
 <form action="/"  METHOD="POST" >
 <!-- Generate all the expense content -->
 <table
         style=" font-family: arial, sans-serif;
-       width: 80%;
+       width: 90%;
        border: 1px solid black;
-       margin-left: 70px;
+       margin-left: 50px;
        margin-top: 50px;
        text-align: center;
        padding:10px;"
 >
 
     <tr>
-        <th>DateTime</th>
-        <th>TransactionID</th>
+        <th>Date</th>
+<!--        <th>TransactionID</th>-->
+        <th>Txn Desc</th>
         <th>Source</th>
-        <th>TransactionType</th>
+        <th>Txn Type</th>
         <th>Amount</th>
-        <th>SubSource</th>
+        <th>SubSource</th>  <!-- from here need dropdown option -->
         <th>Category</th>
-        <th>SubCategory</th>
-        <th>SpentDescription</th>
+        <th>SubCat</th>
+        <th>SpentDesc</th>
         <th>Wasted</th>
     </tr>
 
-    {% for row in rows %}
+    {% for row in dt %}
     <tr>
-        <td>row['datetime']</td>
-        <td>row['txn_id']</td>
-        <td>row['source']</td>
-        <td>row['txn_type']</td>
-        <td>row['amount']</td>
-        <td>row['sub_source']</td>
-        <td>row['category']</td>
-        <td>row['sub_category']</td>
-        <td>row['spent_desc']</td>
-        <td>row['wasted']</td>
+        <td>{{ row[1] }}</td>
+<!--        <td>{{ row[3] }}</td>-->
+        <td>{{ row[4] }}</td>
+        <td>{{ row[7] }}</td>
+        <td>{{ row[5] }}</td>
+        <td>{{ row[2] }}</td>
+        <td>{{ row[8] }}</td> <!-- sub_source -->
+        <td>{{ row[9] }}</td> <!-- category -->
+        <td>{{ row[10] }}</td>  <!-- sub_category -->
+        <td>{{ row[11] }}</td> <!-- spent_desc -->
+        <td>{{ row[12] }}</td>  <!-- wasted -->
     </tr>
     {% endfor %}
 

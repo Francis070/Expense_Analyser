@@ -1,43 +1,30 @@
 from flask import Flask, request, jsonify, render_template
 import sqlite3
 
+
+HOST_NAME = '127.0.0.1'
+HOST_PORT = 5000
+DBFILE = 'expense.db'
+
 app = Flask(__name__)
 
-def get_db_connection():
-    conn = sqlite3.connect('expense.db')
-    conn.row_factory = sqlite3.Row
-    return conn
-
-
-@app.route('/', methods=['POST', 'GET'])
-def home():
-    return render_template('home.html')
-    conn = get_db_connection()
-    posts = conn.execute('''SELECT datetime, txn_id, source, txn_type, amount, sub_source, category, sub_category, 
-    spent_desc, wasted FROM transactions''').fetchall()
+def get_db_data():
+    conn = sqlite3.connect(DBFILE)
+    cursor = conn.cursor()
+    cursor.execute('''SELECT * FROM 'transactions' where sub_source is null and category is null and sub_category 
+    is null and spent_desc is null''')
+    results = cursor.fetchall()
     conn.close()
-    return render_template('home.html', rows = rows)
-    # try:
-    #     if request.method == 'POST':
-    #
-    #         # use = session['user'].get("name")
-    #         # ema = session['user'].get("preferred_username")
-    #
-    #         conn = sqlite3.connect('expense.db')
-    #         c = conn.cursor()
-    #         c.execute('''SELECT * FROM transactions''')
-    #
-    #         rows = c.fetchall()
-    #         print('try is running')
-    #         return render_template("home.html", rows=rows)
-    # except:
-    #     # for row in rows:
-    #     #     print(row)
-    #     #
-    #     # conn.close()
-    #     print('except is running')
-    #     return render_template('home.html')
+    return results
 
+
+@app.route("/")
+def home():
+    data = get_db_data()
+    # print(users)
+
+    # (C2) RENDER HTML PAGE
+    return render_template("home.html", dt=data)
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(HOST_NAME, HOST_PORT)
