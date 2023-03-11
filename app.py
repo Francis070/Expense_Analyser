@@ -21,9 +21,7 @@ def get_db_data():
 @app.route("/")
 def home():
     data = get_db_data()
-    # print(users)
-
-    # (C2) RENDER HTML PAGE
+    
     return render_template("home.html", dt=data)
 
 if __name__ == "__main__":

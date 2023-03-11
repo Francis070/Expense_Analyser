@@ -16,11 +16,11 @@
 </style>
 </head>
 <body>
+<!--width: 90%;-->
 <form action="/"  METHOD="POST" >
 <!-- Generate all the expense content -->
 <table
         style=" font-family: arial, sans-serif;
-       width: 90%;
        border: 1px solid black;
        margin-left: 50px;
        margin-top: 50px;
@@ -31,7 +31,7 @@
     <tr>
         <th>Date</th>
 <!--        <th>TransactionID</th>-->
-        <th>Txn Desc</th>
+<!--        <th>Txn Desc</th>-->
         <th>Source</th>
         <th>Txn Type</th>
         <th>Amount</th>
@@ -44,17 +44,31 @@
 
     {% for row in dt %}
     <tr>
-        <td>{{ row[1] }}</td>
+        <td style="width: 10%;"> {{ row[1] }}</td>
 <!--        <td>{{ row[3] }}</td>-->
-        <td>{{ row[4] }}</td>
-        <td>{{ row[7] }}</td>
-        <td>{{ row[5] }}</td>
-        <td>{{ row[2] }}</td>
-        <td>{{ row[8] }}</td> <!-- sub_source -->
-        <td>{{ row[9] }}</td> <!-- category -->
-        <td>{{ row[10] }}</td>  <!-- sub_category -->
-        <td>{{ row[11] }}</td> <!-- spent_desc -->
-        <td>{{ row[12] }}</td>  <!-- wasted -->
+<!--        <td>{{ row[4] }}</td>-->
+        <td style="width: 5%;">{{ row[7] }}</td>
+        <td style="width: 5%;">{{ row[5] }}</td>
+        <td style="width: 10%;">{{ row[2] }}</td>
+<!--                <label>Sex</label>-->
+        <td style="width: 5%;">
+        <input type="text" list="datalistOptions" size="15" class="form-control is-valid" id="feature_input1" name="sub_source" placeholder="Sub Source" required>
+        <datalist id="datalistOptions">
+            <option value="0"></option>
+            <option value="1"></option>
+        </datalist>
+        </td>
+<!--        <td>{{ row[8] }}</td> &lt;!&ndash; sub_source &ndash;&gt;-->
+        <td style="width: 5%;">
+            <input type="text" list="dataOptions" size="15" class="form-control is-valid" id="feature_input2" name="sub_source" placeholder="Sub Source" required>
+        <datalist id="dataOptions">
+            <option value="0"></option>
+            <option value="1"></option>
+        </datalist>
+        </td> <!-- category -->
+        <td style="width: 10%;">{{ row[10] }}</td>  <!-- sub_category -->
+        <td style="width: 10%;">{{ row[11] }}</td> <!-- spent_desc -->
+        <td style="width: 5%;">{{ row[12] }}</td>  <!-- wasted -->
     </tr>
     {% endfor %}
 
