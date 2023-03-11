@@ -8,7 +8,7 @@ DBFILE = 'expense.db'
 
 app = Flask(__name__)
 
-def get_db_data():
+def get_txn_data():
     conn = sqlite3.connect(DBFILE)
     cursor = conn.cursor()
     cursor.execute('''SELECT * FROM 'transactions' where sub_source is null and category is null and sub_category 
@@ -17,12 +17,40 @@ def get_db_data():
     conn.close()
     return results
 
+def get_src_data():
+    conn = sqlite3.connect(DBFILE)
+    cursor = conn.cursor()
+    cursor.execute(''' SELECT distinct sub_source FROM 'source' ''')
+    results = cursor.fetchall()
+    res = [x[0] for x in results]
+    conn.close()
+    return res
+
+def get_cat_data():
+    conn = sqlite3.connect(DBFILE)
+    cursor = conn.cursor()
+    cursor.execute(''' SELECT distinct category FROM 'category' ''')
+    results = cursor.fetchall()
+    res = [x[0] for x in results]
+    conn.close()
+    return res
+
+def get_subcat_data():
+    conn = sqlite3.connect(DBFILE)
+    cursor = conn.cursor()
+    cursor.execute(''' SELECT distinct sub_category FROM 'category' ''')
+    results = cursor.fetchall()
+    res = [x[0] for x in results]
+    conn.close()
+    return res
 
 @app.route("/")
 def home():
-    data = get_db_data()
-
-    return render_template("home.html", dt=data)
+    txn_data = get_txn_data()
+    src_data = get_src_data()
+    cat_data = get_cat_data()
+    sub_cat_data = get_subcat_data()
+    return render_template("home.html", txn=txn_data, src=src_data, cat=cat_data, subcat=sub_cat_data)
 
 if __name__ == "__main__":
     app.run(HOST_NAME, HOST_PORT)

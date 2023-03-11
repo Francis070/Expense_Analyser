@@ -42,7 +42,7 @@
         <th>Wasted</th>
     </tr>
 
-    {% for row in dt %}
+    {% for row in txn %}
     <tr>
         <td style="width: 10%;"> {{ row[1] }}</td>
 <!--        <td>{{ row[3] }}</td>-->
@@ -50,25 +50,71 @@
         <td style="width: 5%;">{{ row[7] }}</td>
         <td style="width: 5%;">{{ row[5] }}</td>
         <td style="width: 10%;">{{ row[2] }}</td>
-<!--                <label>Sex</label>-->
         <td style="width: 5%;">
         <input type="text" list="datalistOptions" size="15" class="form-control is-valid" id="feature_input1" name="sub_source" placeholder="Sub Source" required>
-        <datalist id="datalistOptions">
-            <option value="0"></option>
-            <option value="1"></option>
+            <datalist id="datalistOptions">
+                <option value=" {{ src[0] }} "></option>
+                <option value=" {{ src[1] }} "></option>
+                <option value=" {{ src[2] }} "></option>
+                <option value=" {{ src[3] }} "></option>
+                <option value=" {{ src[4] }} "></option>
+                <option value=" {{ src[5] }} "></option>
+                <option value=" {{ src[6] }} "></option>
+                <option value=" {{ src[7] }} "></option>
+                <option value=" {{ src[8] }} "></option>
         </datalist>
         </td>
-<!--        <td>{{ row[8] }}</td> &lt;!&ndash; sub_source &ndash;&gt;-->
         <td style="width: 5%;">
-            <input type="text" list="dataOptions" size="15" class="form-control is-valid" id="feature_input2" name="sub_source" placeholder="Sub Source" required>
-        <datalist id="dataOptions">
-            <option value="0"></option>
-            <option value="1"></option>
-        </datalist>
+            <input type="text" list="dataOptions" size="15" class="form-control is-valid" id="feature_input2" name="category" placeholder="Category" required>
+            <datalist id="dataOptions">
+                <option value=" {{ cat[0] }} "></option><option value=" {{ cat[1] }} "></option>
+                <option value=" {{ cat[2] }} "></option><option value=" {{ cat[3] }} "></option>
+                <option value=" {{ cat[4] }} "></option><option value=" {{ cat[5] }} "></option>
+                <option value=" {{ cat[6] }} "></option><option value=" {{ cat[7] }} "></option>
+                <option value=" {{ cat[8] }} "></option><option value=" {{ cat[9] }} "></option>
+                <option value=" {{ cat[10] }} "></option><option value=" {{ cat[11] }} "></option>
+                <option value=" {{ cat[12] }} "></option><option value=" {{ cat[13] }} "></option>
+            </datalist>
         </td> <!-- category -->
-        <td style="width: 10%;">{{ row[10] }}</td>  <!-- sub_category -->
-        <td style="width: 10%;">{{ row[11] }}</td> <!-- spent_desc -->
-        <td style="width: 5%;">{{ row[12] }}</td>  <!-- wasted -->
+        <td style="width: 10%;">
+            <input type="text" list="subcatOptions" size="15" class="form-control is-valid" id="feature_input3" name="sub_category" placeholder="Sub Category" required>
+            <datalist id="subcatOptions">
+                <option value=" {{ subcat[0] }} "></option><option value=" {{ subcat[1] }} "></option>
+                <option value=" {{ subcat[2] }} "></option><option value=" {{ subcat[3] }} "></option>
+                <option value=" {{ subcat[4] }} "></option><option value=" {{ subcat[5] }} "></option>
+                <option value=" {{ subcat[6] }} "></option><option value=" {{ subcat[7] }} "></option>
+                <option value=" {{ subcat[8] }} "></option><option value=" {{ subcat[9] }} "></option>
+                <option value=" {{ subcat[10] }} "></option><option value=" {{ subcat[11] }} "></option>
+                <option value=" {{ subcat[12] }} "></option><option value=" {{ subcat[13] }} "></option>
+                <option value=" {{ subcat[14] }} "></option><option value=" {{ subcat[15] }} "></option>
+                <option value=" {{ subcat[16] }} "></option><option value=" {{ subcat[17] }} "></option>
+                <option value=" {{ subcat[18] }} "></option><option value=" {{ subcat[19] }} "></option>
+                <option value=" {{ subcat[20] }} "></option><option value=" {{ subcat[21] }} "></option>
+                <option value=" {{ subcat[22] }} "></option><option value=" {{ subcat[23] }} "></option>
+                <option value=" {{ subcat[24] }} "></option><option value=" {{ subcat[25] }} "></option>
+                <option value=" {{ subcat[26] }} "></option><option value=" {{ subcat[27] }} "></option>
+                <option value=" {{ subcat[28] }} "></option><option value=" {{ subcat[29] }} "></option>
+                <option value=" {{ subcat[30] }} "></option><option value=" {{ subcat[31] }} "></option>
+                <option value=" {{ subcat[32] }} "></option><option value=" {{ subcat[33] }} "></option>
+                <option value=" {{ subcat[34] }} "></option><option value=" {{ subcat[35] }} "></option>
+                <option value=" {{ subcat[36] }} "></option><option value=" {{ subcat[37] }} "></option>
+                <option value=" {{ subcat[38] }} "></option><option value=" {{ subcat[39] }} "></option>
+                <option value=" {{ subcat[40] }} "></option><option value=" {{ subcat[41] }} "></option>
+                <option value=" {{ subcat[42] }} "></option><option value=" {{ subcat[43] }} "></option>
+                <option value=" {{ subcat[44] }} "></option><option value=" {{ subcat[45] }} "></option>
+                <option value=" {{ subcat[46] }} "></option><option value=" {{ subcat[47] }} "></option>
+                <option value=" {{ subcat[48] }} "></option><option value=" {{ subcat[49] }} "></option>
+                <option value=" {{ subcat[50] }} "></option><option value=" {{ subcat[51] }} "></option>
+                <option value=" {{ subcat[52] }} "></option><option value=" {{ subcat[53] }} "></option>
+                <option value=" {{ subcat[54] }} "></option><option value=" {{ subcat[55] }} "></option>
+            </datalist>
+        </td>  <!-- sub_category -->
+        <td style="width: 10%;">
+            <input type="text" size="20" class="form-control is-valid" id="feature_input4" name="spent_desc" placeholder="Spent Description" required>
+        </td> <!-- spent_desc -->
+        <td style="width: 5%;">
+            <input type="checkbox" name="wasted" id="wasted" />
+        </td>  <!-- wasted -->
     </tr>
     {% endfor %}
 
