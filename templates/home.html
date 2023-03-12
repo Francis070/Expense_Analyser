@@ -22,16 +22,16 @@
 <table
         style=" font-family: arial, sans-serif;
        border: 1px solid black;
-       margin-left: 50px;
+<!--       margin-left: 50px;-->
        margin-top: 50px;
        text-align: center;
-       padding:10px;"
+       padding:30px;"
 >
 
     <tr>
         <th>Date</th>
 <!--        <th>TransactionID</th>-->
-<!--        <th>Txn Desc</th>-->
+        <th>Txn Desc</th>
         <th>Source</th>
         <th>Txn Type</th>
         <th>Amount</th>
@@ -46,7 +46,7 @@
     <tr>
         <td style="width: 10%;"> {{ row[1] }}</td>
 <!--        <td>{{ row[3] }}</td>-->
-<!--        <td>{{ row[4] }}</td>-->
+        <td>{{ row[4] }}</td>
         <td style="width: 5%;">{{ row[7] }}</td>
         <td style="width: 5%;">{{ row[5] }}</td>
         <td style="width: 10%;">{{ row[2] }}</td>
@@ -121,7 +121,10 @@
 </table>
 
 <!-- View all the claims -->
-<!-- <button type="submit", class="viewall-button" name="save", value="save">View All</button>-->
+<br><br><br>
+        <div class="d-grid gap-2 col-6 mx-auto" align = 'center'>
+            <button type="submit" class="btn btn-primary">Update</button>
+        </div>
 
 </form>
 </body>
