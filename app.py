@@ -52,5 +52,25 @@ def home():
     sub_cat_data = get_subcat_data()
     return render_template("home.html", txn=txn_data, src=src_data, cat=cat_data, subcat=sub_cat_data)
 
+@app.route('/update', methods=['GET', 'POST'])
+def update():
+    if request.method == 'POST':
+        # Get input from user and update data in database
+        id = request.form.getlist('id')
+        sub_source = request.form.getlist('sub_source')
+        category = request.form.getlist('category')
+        sub_category = request.form.getlist('sub_category')
+        spent_desc = request.form.getlist('spent_desc')
+        wasted = request.form.getlist('wasted')
+
+        for i in range(len(sub_source)):
+            print(id[i] + ' ' + sub_source[i] + ' ' + category[i] + ' ' + sub_category[i] + ' ' + spent_desc[i])
+
+        txn_data = get_txn_data()
+        src_data = get_src_data()
+        cat_data = get_cat_data()
+        sub_cat_data = get_subcat_data()
+        return render_template("home.html", txn=txn_data, src=src_data, cat=cat_data, subcat=sub_cat_data)
+
 if __name__ == "__main__":
     app.run(HOST_NAME, HOST_PORT)
