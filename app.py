@@ -63,8 +63,20 @@ def update():
         spent_desc = request.form.getlist('spent_desc')
         wasted = request.form.getlist('wasted')
 
-        for i in range(len(sub_source)):
-            print(id[i] + ' ' + sub_source[i] + ' ' + category[i] + ' ' + sub_category[i] + ' ' + spent_desc[i])
+        for i in range(len(id)):
+            waste = False
+            if wasted[i] == 'Yes':
+                waste = True
+            conn = sqlite3.connect(DBFILE)
+            cursor = conn.cursor()
+            cursor.execute('''UPDATE 'transactions' SET sub_source = ?,  category = ?,
+            sub_category = ?, spent_desc = ?, wasted = ?
+            WHERE txn_id = ? ''', (sub_source[i], category[i], sub_category[i], spent_desc[i], waste, id[i]))
+            # print(
+            #     id[i] + ' ' + sub_source[i] + ' ' + category[i] + ' ' + sub_category[i] + ' ' + spent_desc[i] + ' ' + str(waste))
+
+        conn.commit()
+        conn.close()
 
         txn_data = get_txn_data()
         src_data = get_src_data()

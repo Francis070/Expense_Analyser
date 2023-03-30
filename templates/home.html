@@ -45,7 +45,7 @@
     {% for row in txn %}
     <tr>
         <td style="width: 10%;"> {{ row[1] }}</td>
-        <td style="width: 10%;"><input type="text" name="id" value={{row[3]}} readonly>
+        <td style="width: 10%;"><input type="text" size="10" name="id" value={{row[3]}} readonly>
 <!--            {{ row[3] }}-->
         </td>
         <td style="width: 20%;">{{ row[4] }}</td>
@@ -53,7 +53,7 @@
         <td style="width: 5%;">{{ row[5] }}</td>
         <td style="width: 10%;">{{ row[2] }}</td>
         <td style="width: 5%;">
-        <input type="text" list="datalistOptions" size="15" class="form-control is-valid" id="feature_input1" name="sub_source" placeholder="Sub Source">
+        <input type="text" list="datalistOptions" size="10" class="form-control is-valid" id="feature_input1" name="sub_source" placeholder="Sub Source">
             <datalist id="datalistOptions">
                 <option value=" {{ src[0] }} "></option>
                 <option value=" {{ src[1] }} "></option>
@@ -67,7 +67,7 @@
         </datalist>
         </td>
         <td style="width: 5%;">
-            <input type="text" list="dataOptions" size="15" class="form-control is-valid" id="feature_input2" name="category" placeholder="Category" >
+            <input type="text" list="dataOptions" size="10" class="form-control is-valid" id="feature_input2" name="category" placeholder="Category" >
             <datalist id="dataOptions">
                 <option value=" {{ cat[0] }} "></option><option value=" {{ cat[1] }} "></option>
                 <option value=" {{ cat[2] }} "></option><option value=" {{ cat[3] }} "></option>
@@ -79,7 +79,7 @@
             </datalist>
         </td>
         <td style="width: 10%;">
-            <input type="text" list="subcatOptions" size="15" class="form-control is-valid" id="feature_input3" name="sub_category" placeholder="Sub Category" >
+            <input type="text" list="subcatOptions" size="10" class="form-control is-valid" id="feature_input3" name="sub_category" placeholder="Sub Category" >
             <datalist id="subcatOptions">
                 <option value=" {{ subcat[0] }} "></option><option value=" {{ subcat[1] }} "></option>
                 <option value=" {{ subcat[2] }} "></option><option value=" {{ subcat[3] }} "></option>
@@ -112,10 +112,14 @@
             </datalist>
         </td>  <!-- sub_category -->
         <td style="width: 10%;">
-            <input type="text" size="20" class="form-control is-valid" id="feature_input4" name="spent_desc" placeholder="Spent Description" >
+            <input type="text" size="15" class="form-control is-valid" id="feature_input4" name="spent_desc" placeholder="Spent Description" >
         </td> <!-- spent_desc -->
         <td style="width: 5%;">
-            <input type="checkbox" name="wasted" id="wasted" />
+            <input type="text" list="iswasted" size="4" id="wasted" name="wasted">
+            <datalist id="iswasted">
+                <option value="No"></option>
+                <option value="Yes"></option>
+        </datalist>
         </td>  <!-- wasted -->
     </tr>
     {% endfor %}
