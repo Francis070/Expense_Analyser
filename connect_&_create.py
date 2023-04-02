@@ -1,14 +1,29 @@
-import sqlite3
+# import sqlite3
+import psycopg2
 
-conn = sqlite3.connect('expense.db')
+# conn = sqlite3.connect('expense.db')
+dbname = "postgres"
+user = "postgres"
+password = "Postgresql"
+host = "localhost"
+port = "5432"
+
+conn = psycopg2.connect(
+    dbname=dbname,
+    user=user,
+    password=password,
+    host=host,
+    port=port
+)
 
 print('opened DB successfully')
 
 ####----untracked_transaction----
+cur = conn.cursor()
 
-# conn.execute('drop table if exists untracked_txn;')
+# cur.execute('drop table if exists public.untracked_txn;')
 #
-# conn.execute('''create table if not exists untracked_txn (
+# cur.execute('''create table if not exists public.untracked_txn (
 # datetime varchar(50),
 # amount varchar(50),
 # txn_id varchar(100),
@@ -20,10 +35,10 @@ print('opened DB successfully')
 
 ####----transaction----
 
-# conn.execute('drop table if exists transactions;')
+# cur.execute('drop table if exists transactions;')
 #
-# conn.execute('''create table if not exists transactions (
-# expense_id INTEGER PRIMARY KEY AUTOINCREMENT,
+# cur.execute('''create table if not exists transactions (
+# expense_id SERIAL PRIMARY KEY ,
 # datetime date,
 # amount real,
 # txn_id varchar(100),
@@ -41,9 +56,9 @@ print('opened DB successfully')
 
 ####----Category----
 
-# conn.execute('drop table if exists category;')
+# cur.execute('drop table if exists category;')
 #
-# conn.execute('''create table if not exists category (
+# cur.execute('''create table if not exists category (
 # category_id varchar(100),
 # category varchar(100),
 # sub_category varchar(200),
@@ -52,9 +67,9 @@ print('opened DB successfully')
 
 ####----Source----
 
-conn.execute('drop table if exists source;')
+cur.execute('drop table if exists source;')
 
-conn.execute('''create table if not exists source (
+cur.execute('''create table if not exists source (
 source_id varchar(200),
 source varchar(200),
 sub_source varchar(200)
@@ -62,5 +77,7 @@ sub_source varchar(200)
 
 print("Table created successfully")
 
+# cur.commit()
+cur.close()
 conn.commit()
 conn.close()

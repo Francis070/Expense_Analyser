@@ -1,8 +1,22 @@
 import pandas as pd
-import sqlite3
+# import sqlite3
+import psycopg2
 
-conn = sqlite3.connect('expense.db')
-# cursor = conn.cursor()
+# conn = sqlite3.connect('expense.db')
+dbname = "postgres"
+user = "postgres"
+password = "Postgresql"
+host = "localhost"
+port = "5432"
+
+conn = psycopg2.connect(
+    dbname=dbname,
+    user=user,
+    password=password,
+    host=host,
+    port=port
+)
+cur = conn.cursor()
 source = 'SBI'
 
 path = r'C:\Users\amiab\Projects\Expense Manager\bank_statement\SBI\1674916118250LUS5WmVN15QZ9SD9.csv'
@@ -36,10 +50,11 @@ for row in range(len(df)):
 
     params = (datetime, amount, txn_id, txn_desc, txn_type, source, balance)
 
-    insert_val = '''insert into untracked_txn values(?, ?, ?, ?, ?, ?, ?);'''
+    insert_val = '''insert into untracked_txn values(%s, %s, %s, %s, %s, %s, %s);'''
 
-    conn.execute(insert_val, params)
+    cur.execute(insert_val, params)
 
+cur.close()
 conn.commit()
 conn.close()
 

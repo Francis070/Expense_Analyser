@@ -1,20 +1,12 @@
-Paid Rs. 589 to E Commerce with Paytm Ref: 43744531907. For more details, visit http://m.p-y.tm/care
+Pointers -
 
-Paid Rs. 136 to ZOMATO LIMITED from Paytm Balance. Updated Balance: Food Wallet- Rs 1878.14. For more details visit Paytm.com/care.
+1 - Used SQLite DB initially but then the update statement did't work so need to change all the DB connection and usage of DB to PGsql.
 
-Dear SBI User, your A/c X4381-debited by Rs5000.0 on 10Jan23 transfer to MR MMEHUL BHAYANA Ref No 301086494445. If not done by u, fwd 
-this SMS to 9223008333/Call 1800111109 or 09449112211 to block UPI -SBI
+Files that needs to be changed - 
+	app.py
+	connect_&_create.py
+	csv_parser_loader.py	--for source and category files loading.
+	sbi_loader.py
+	txn_loader.py
 
-Innovaccer has added Rs.2200 in your Food Wallet with Txn ID 43714838015. Have queries related to Paytm? Visit Paytm.com/care
-
-A/c *7589 Credited for Rs.5000 on 05-01-2023 21:35:54 by Mob Bk ref no 300507135625 Avl Bal Rs:10834.45 -Union Bank of India
-
-Dear SBI User, your A/c X4381-debited by Rs1000.0 on 03Jan23 transfer to Add Money to Ref No 336982829609. If not done by u, fwd 
-this SMS to 9223008333/Call 1800111109 or 09449112211 to block UPI -SBI
-
-Dear SBI User, your A/c X4381-debited by Rs12.0 on 31Dec22 transfer to ANIL KUMAR ROUT Ref No 236562090253. If not done by u, fwd 
-this SMS to 9223008333/Call 1800111109 or 09449112211 to block UPI -SBI
-
-A/c *7589 Debited for Rs.30 on 30-12-2022 11:20:34 by Mob Bk ref no 236434085563 Avl Bal Rs:6812.45 -Union Bank of India
-
-A/c *7589 Credited for Rs.150 on 17-12-2022 21:04:05 by Mob Bk ref no 235170422265 Avl Bal Rs:5352.45 -Union Bank of India
+connect_&_create.py -> sbi_loader.py -> csv_parser_loader.py -> txn_loader.py -> app.py

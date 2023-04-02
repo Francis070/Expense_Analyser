@@ -1,13 +1,29 @@
-import sqlite3
+# import sqlite3
+import psycopg2
 
-conn = sqlite3.connect('expense.db')
+# conn = sqlite3.connect('expense.db')
+dbname = "postgres"
+user = "postgres"
+password = "Postgresql"
+host = "localhost"
+port = "5432"
+
+conn = psycopg2.connect(
+    dbname=dbname,
+    user=user,
+    password=password,
+    host=host,
+    port=port
+)
+cur = conn.cursor()
+# conn = sqlite3.connect('expense.db')
 
 print('Opened transaction table successfully')
 
 # conn.execute('delete from transactions;')
 # conn.execute('''delete from sqlite_sequence where name = 'transactions';''')
 
-conn.execute(
+cur.execute(
 '''insert into transactions (datetime, amount, txn_id, txn_desc, txn_type, balance, source, sub_source, 
 category, sub_category, spent_desc, wasted)
 select
@@ -38,7 +54,7 @@ null as spent_desc,
 false as wasted
 from untracked_txn;''')
 
-conn.execute(
+cur.execute(
 '''update transactions
 set
 txn_id = 'ex00'||expense_id
@@ -47,5 +63,6 @@ where txn_id = '' or txn_id is null
 
 print("Inserted data successfully")
 
+cur.close()
 conn.commit()
 conn.close()
