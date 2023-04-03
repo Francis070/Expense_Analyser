@@ -5,3 +5,7 @@ Issue for timeout - https://stackoverflow.com/questions/51768496/why-do-https-re
 			- https://github.com/eternnoir/pyTelegramBotAPI/issues/528
 
 Image preprocessing - https://towardsdatascience.com/getting-started-with-tesseract-part-i-2a6a6b1cf75e
+
+Read data from google sheets using python - https://towardsdatascience.com/read-data-from-google-sheets-into-pandas-without-the-google-sheets-api-5c468536550
+
+Dependent dropdowns in google sheet - https://www.youtube.com/watch?v=1SIN5NyQ9fw
